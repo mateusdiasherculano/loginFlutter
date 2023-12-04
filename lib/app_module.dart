@@ -7,6 +7,6 @@ class AppModule extends Module {
 
   @override
   void routes(r) {
-    r.module('/', module: SignInModule());
+    r.module('/sign', module: SignInModule());
   }
 }

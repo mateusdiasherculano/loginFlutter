@@ -1,7 +1,7 @@
 import 'package:auth/src/network/api/dio_client_interface.dart';
 import 'package:dio/dio.dart';
 
-class dioClient implements IDioClient {
+class DioClient implements IDioClient {
   final Dio dio = Dio();
   @override
   Future<Map<String, String>> get(String url) async {

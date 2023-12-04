@@ -33,53 +33,55 @@ class _SignInPage extends State<SignInPage> {
       appBar: AppBar(
         title: const Text('Login'),
       ),
-      body: SingleChildScrollView(
-        child: ScopedBuilder<SignInStore, UserResponse>(
-            store: controller.store,
-            onLoading: (_) => SizedBox(
-                  height: height,
-                  child: const Center(
-                    child: CircularProgressIndicator(),
+      body: Expanded(
+        child: SingleChildScrollView(
+          child: ScopedBuilder<SignInStore, UserResponse>(
+              store: controller.store,
+              onLoading: (_) => SizedBox(
+                    height: height,
+                    child: const Center(
+                      child: CircularProgressIndicator(),
+                    ),
                   ),
-                ),
-            onError: (_, error) => SizedBox(
-                  height: height,
-                  child: const Center(
-                    child: Text('erro'),
+              onError: (_, error) => SizedBox(
+                    height: height,
+                    child: const Center(
+                      child: Text('erro'),
+                    ),
                   ),
-                ),
-            onState: (_, state) {
-              return Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    TextField(
-                      controller: emailController,
-                      decoration: const InputDecoration(
-                        labelText: 'Username',
+              onState: (_, state) {
+                return Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      TextField(
+                        controller: emailController,
+                        decoration: const InputDecoration(
+                          labelText: 'Username',
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 16.0),
-                    TextField(
-                      controller: passwordController,
-                      obscureText: true,
-                      decoration: const InputDecoration(
-                        labelText: 'Password',
+                      const SizedBox(height: 16.0),
+                      TextField(
+                        controller: passwordController,
+                        obscureText: true,
+                        decoration: const InputDecoration(
+                          labelText: 'Password',
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 24.0),
-                    ElevatedButton(
-                      onPressed: () {
-                        controller.sign(
-                            emailController.text, passwordController.text);
-                      },
-                      child: const Text('Login'),
-                    ),
-                  ],
-                ),
-              );
-            }),
+                      const SizedBox(height: 24.0),
+                      ElevatedButton(
+                        onPressed: () {
+                          controller.sign(
+                              emailController.text, passwordController.text);
+                        },
+                        child: const Text('Login'),
+                      ),
+                    ],
+                  ),
+                );
+              }),
+        ),
       ),
     );
   }
